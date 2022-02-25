@@ -1,0 +1,26 @@
+create temporary table month_days (
+month varchar(10),
+days int(2)
+);
+	SET @year = EXTRACT(YEAR FROM CURDATE());
+
+DELIMITER //
+
+CREATE PROCEDURE my_now ()
+BEGIN
+  DECLARE i INT DEFAULT 1;
+  WHILE i < 13 DO
+    set @days_count =  EXTRACT(day from LAST_DAY(STR_TO_DATE(concat(@year,',',i,',1'), '%Y,%m,%d')));
+	set @month_name = MONTHNAME(STR_TO_DATE(concat(@year,',',i,',1'), '%Y,%m,%d'));
+    set i = i+1;
+	insert into month_days set month = @month_name, days = @days_count;
+  END WHILE;
+END;
+
+CALL my_now();
+
+select * from month_days;
+
+DROP TABLE month_days;
+DROP PROCEDURE my_now;
+

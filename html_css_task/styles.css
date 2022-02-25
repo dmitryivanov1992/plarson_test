@@ -1,0 +1,284 @@
+@font-face {
+    font-family: "RobotoMedium";
+    src: url(fonts/Roboto-Medium.ttf);
+}
+
+@font-face {
+    font-family: "RobotoLight";
+    src: url(fonts/Roboto-Light.ttf);
+}
+
+@font-face {
+    font-family: "RobotoThin";
+    src: url(fonts/Roboto-Thin.ttf);
+}
+
+:root {
+    --medium-font: "RobotoMedium", sans-serif;
+    --text-color: #184562;
+}
+
+* {
+    margin: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    min-height: 100%;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+}
+
+/*Блок header */
+
+header {
+    min-height: 50px;
+    background-color: #3599ad9a;
+    font-family: var(--medium-font);
+    padding: 10px;
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 auto;
+            flex: 0 0 auto;
+}
+
+
+/*Блок main */
+
+.users {
+    background-color: rgba(255, 255, 255, 0.76);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    max-height: calc(100% - 150px);
+    overflow: hidden;
+}
+
+
+/*Кастомизация блока "список пользователей" */
+
+.users__list {
+    min-width: 20%;
+    max-width: 40%;
+    resize: horizontal;
+    display: inline-block;
+    overflow: auto;
+    height: 100%;
+    border-right: 2px solid rgb(163, 163, 163);
+    background-color: #f1f2f5;
+}
+
+/*Кастомизация полосы прокрутки */
+
+.users__list::-webkit-scrollbar {
+    width: 5px;
+}
+
+.users__list::-webkit-scrollbar-thumb {
+    background-color: rgb(209, 209, 209);
+    border-radius: 5%;
+}
+
+/*Кастомизация плитки пользователя*/
+
+.users__user {
+    font-size: 20px;
+    border-bottom: 1px solid grey;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+    cursor: pointer;
+    -webkit-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease;
+    background-color: transparent;
+    font-family: var(--medium-font);
+    font-size: 15px;
+}
+
+
+/*Активный пользователь*/
+.users__user.active {
+    background-color: #cecfd1;
+}
+
+.users__user::before {
+    content: url("images/icon_human.png");
+}
+
+
+.users__user:hover {
+    background-color: #e6e9f0;
+}
+
+
+/*Кастомизация окна чата*/
+
+.users__chat {
+    background-color: #dbdbdb;
+    width: 100%;
+    padding: 30px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    overflow-y: scroll;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/*Кастомизация полосы прокрутки*/
+
+.users__chat::-webkit-scrollbar {
+    width: 5px;
+}
+
+.users__chat::-webkit-scrollbar-thumb {
+    background-color: rgb(177, 176, 176);
+    border-radius: 5%;
+}
+
+/*Общие стили для сообщений*/
+.chat__message {
+    border-radius: 25px;
+    padding: 10px 15px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    max-width: 250px;
+    gap: 8px;
+}
+
+/*Полученные сообщения*/
+.chat__recieved {
+    background-color: #D4F1F4;
+    -ms-flex-item-align: start;
+    align-self: flex-start;
+}
+
+/*Отправленные сообщения*/
+.chat__sent {
+    background-color: #75E6DA;
+    -ms-flex-item-align: end;
+    align-self: flex-end;
+}
+
+/*Текст сообщения*/
+.message__text {
+    font-family: "RobotoLight", sans-serif;
+    font-size: 14px;
+    color: var(--text-color);
+}
+
+/*Время сообщения*/
+.chat__time {
+    font-family: "RobotoThin", sans-serif;
+    font-size: 12px;
+    color: darkslategray;
+    -ms-flex-item-align: end;
+    align-self: flex-end;
+}
+
+/*Блок footer */
+
+footer {
+    min-height: 100px;
+    background-color: azure;
+    padding: 10px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 auto;
+            flex: 0 0 auto;
+    align-items: center;
+}
+
+footer textarea {
+    resize: none;
+    margin-right: 50px;
+    font-family: var(--medium-font);
+}
+
+/*кнопка "Отправить"*/
+.button_send {
+    border: 0;
+    background-color: #3599ad9a;
+    font-family: var(--medium-font);
+    padding: 10px;
+    cursor: pointer;
+    color: var(--text-color);
+    border-radius: 10px;
+    font-size: 12px;
+    height: 35px;
+}
+
+.button_send:hover {
+    background-color: #46cfeb9a;
+}
+
+.button_send:active {
+    background-color: #8fd0dd9a;
+}
+
+
+/*поддержка мобильных устройств*/
+
+@media screen and (max-width:900px) {
+    .users__list {
+        min-width: 30%;
+    }
+}
+
+@media screen and (max-width:590px) {
+    .users__list {
+        min-width: 35%;
+    }
+
+    .users__user{
+        font-size: 13px;
+    }
+
+    .message__text{
+        font-size: 12px;
+    }
+
+    .users__user::before {
+        content: url(images/icon_human_mobile.png);
+    }
+}
+
+@media screen and (max-width:426px) {
+    .users__list {
+        min-width: 42%;
+    }
+}
